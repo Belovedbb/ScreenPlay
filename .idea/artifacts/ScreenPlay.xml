@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="ScreenPlay">
+    <output-path>$PROJECT_DIR$/out/artifacts/ScreenPlay</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.shoot.go.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="ScreenPlay" />
+        <option name="vendor" value="" />
+        <option name="version" value="1.0.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="ScreenPlay.jar">
+        <element id="module-output" name="ScreenPlay" />
+        <element id="file-copy" path="$PROJECT_DIR$/library/controlsfx-8.40.14.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/library/humble-video-arch-x86_64-w64-mingw32-0.2.1.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/library/humble-video-noarch-0.2.1.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/library/slf4j-api-1.6.1.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/library/slf4j-simple-1.6.1.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/library/sqlite-jdbc-3.21.0.jar" />
+        <element id="dir-copy" path="$PROJECT_DIR$/resource" />
+      </element>
+    </root>
+  </artifact>
+</component>

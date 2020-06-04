@@ -6,6 +6,7 @@ import com.shoot.Settings.Settings;
 import com.shoot.database.StartDatabaseLite;
 import com.shoot.player.VideoChooser;
 import com.shoot.recording.RecordImage;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.embed.swing.SwingNode;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -17,6 +18,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -71,12 +73,12 @@ public class CaptureRectangle{
     //image capture
     private void setCapture()  {
 //Embedding swing in javafx
-        SwingNode swingNode=new SwingNode();
         //Main method that out image on javafx scene
-        setImage(swingNode);
+        Label image = new Label();
+        setImage(image);
         BorderPane pane=new BorderPane();
         pane.setTop(menus());
-        ScrollPane scrollPane=new ScrollPane(swingNode);
+        ScrollPane scrollPane=new ScrollPane(image);
         Label preview=new Label("Preview Image");
         Label lb=new Label("",scrollPane);
         lb.setPadding(new Insets(0,10,0,0));
@@ -103,13 +105,12 @@ public class CaptureRectangle{
         primaryStage.setOpacity(1);
         primaryStage.show();
     }
-    private void setImage(SwingNode e){
-        //Using swing thread, capture image on JLabel into javafx scene
-        SwingUtilities.invokeLater(() ->
-                e.setContent(new JLabel(new ImageIcon(capture()))));
+    private void setImage(Label label){
+        javafx.scene.image.Image image = SwingFXUtils.toFXImage(capture(), null);
+        label.setGraphic(new ImageView(image));
     }
-    protected   BufferedImage capture(){
-        System.out.print("My canvas rectangle : "+getRectangle());
+    private BufferedImage capture(){
+        System.out.print("My canvas rectangle : " + getRectangle());
         screen =robot.createScreenCapture(getRectangle());
         return  screen;
     }
@@ -289,7 +290,7 @@ public class CaptureRectangle{
     }
     //==================================================================================================================
     //Saving image capture
-    String getDatabaseAddress;
+    private String getDatabaseAddress;
     private Node buttonSave(){
 
         String statmentGet="select file from "+ StartDatabaseLite.getTableName()+" where id='2'";

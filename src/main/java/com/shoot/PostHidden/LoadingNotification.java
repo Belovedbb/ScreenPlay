@@ -95,7 +95,7 @@ public class LoadingNotification {
         });
         VBox box = new VBox(pI, new Label(message));
         box.setAlignment(Pos.CENTER);
-        ImageView image=new ImageView(new javafx.scene.image.Image("file:resource\\a.jpg",500,400,true,true));
+        ImageView image=new ImageView(new javafx.scene.image.Image("a.jpg",500,400,true,true));
         StackPane sp=new StackPane(image,box);
         Scene scene= new Scene(sp, 400, 300);
         startStage(primaryStage,new HBox(), scene);
@@ -129,7 +129,7 @@ public class LoadingNotification {
     }
     //load up the scene and display
    private void startStage(Stage primaryStage, Node node, Scene scene) {
-        StackPane sp=new StackPane(new ImageView(new javafx.scene.image.Image("file:resource\\a.jpg",400,400,true,true)),node);
+        StackPane sp=new StackPane(new ImageView(new javafx.scene.image.Image("a.jpg",400,400,true,true)),node);
         Scene _scene = scene == null ?  new Scene(sp, 200, 200):scene;
         _scene.setCursor(Cursor.WAIT);
         sp.setAlignment(Pos.CENTER);
@@ -137,7 +137,7 @@ public class LoadingNotification {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.centerOnScreen();
         primaryStage.toFront();
-        primaryStage.getIcons().add(new Image("file:resource\\a.jpg",200,200,true,true));
+        primaryStage.getIcons().add(new Image("a.jpg",200,200,true,true));
         primaryStage.show();
     }
 }

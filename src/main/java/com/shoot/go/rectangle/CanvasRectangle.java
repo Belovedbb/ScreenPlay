@@ -59,7 +59,7 @@ public class CanvasRectangle {
         scene = new Scene(pane);
         canvasStage.initStyle(StageStyle.UNDECORATED);
         canvasStage.setMaximized(true);
-        canvasStage.getIcons().add(new javafx.scene.image.Image("file:resource\\a.jpg",200,200,true,true));
+        canvasStage.getIcons().add(new javafx.scene.image.Image("a.jpg",200,200,true,true));
 
         //Set transparency
         try {

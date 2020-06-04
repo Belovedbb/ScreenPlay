@@ -13,41 +13,40 @@ import javafx.stage.Stage;
 public class SettingTree extends Pane
 {
 
-    TreeView<String> tree;
-    Label lblShowName;
-    TreeItem<String> root, appearance,opacity, directory,deleteFile,theme,
-            color,subDirectory,opLev;
+    protected TreeItem<String> deleteFile;
+    protected TreeItem<String> subDirectory;
+
     public  SettingTree(Stage stage)
     {
 
 
-        root = new TreeItem<>("Settings");
+        TreeItem<String> root = new TreeItem<>("Settings");
         root.setExpanded(true);
-        appearance = makeShow("Appearance", root);
-        theme=makeShow("Theme", appearance);
-        color= makeShow("Color", appearance);
+        TreeItem<String> appearance = makeShow("Appearance", root);
+        TreeItem<String> theme = makeShow("Theme", appearance);
+        TreeItem<String> color = makeShow("Color", appearance);
 
-        directory = makeShow("File Directory", root);
+        TreeItem<String> directory = makeShow("File Directory", root);
         deleteFile=makeShow("Delete File", directory);
         subDirectory=makeShow("Select Directory", directory);
 
-        opacity = makeShow("Canvas Opacity", root);
-        opLev=makeShow("Opacity Level", opacity);
+        TreeItem<String> opacity = makeShow("Canvas Opacity", root);
+        TreeItem<String> opLev = makeShow("Opacity Level", opacity);
 
 
-        tree = new TreeView<>(root);
+        TreeView<String> tree = new TreeView<>(root);
 
         tree.minHeightProperty().bind(stage.heightProperty());
         // tree.setMinHeight(stage.getMinHeight());
         tree.setShowRoot(false);
         Settings.change(tree);
-        lblShowName = new Label();
+        Label lblShowName = new Label();
         //this.setPadding(new Insets(20,20,20,20));
         this.getChildren().addAll(tree, lblShowName);
 
     }
-    public TreeItem<String> makeShow(String title,
-                                     TreeItem<String> parent)
+    private TreeItem<String> makeShow(String title,
+                                      TreeItem<String> parent)
     {
         TreeItem<String> show = new TreeItem<>(title);
         show.setExpanded(true);

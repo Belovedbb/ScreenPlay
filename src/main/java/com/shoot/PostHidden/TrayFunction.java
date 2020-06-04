@@ -19,7 +19,7 @@ public class TrayFunction   {
     private java.awt.MenuItem pauseRecording,stopRecording;
 
     private static final String iconImageLoc =
-            "file:resource\\a.jpg";
+            "a.jpg";
 
     private Stage primaryStage;
     int i=0;

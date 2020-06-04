@@ -37,7 +37,7 @@ public class Settings{
         stage.setScene(scene);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.getIcons().add(new javafx.scene.image.Image("file:resource\\a.jpg",200,200,true,true));
+        stage.getIcons().add(new javafx.scene.image.Image("a.jpg",200,200,true,true));
         stage.setAlwaysOnTop(true);
         stage.setTitle("Settings");
         stage.showAndWait();

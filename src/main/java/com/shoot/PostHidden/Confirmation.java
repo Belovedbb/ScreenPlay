@@ -68,7 +68,7 @@ public class Confirmation {
         stackPane.setPadding(new Insets(0,0,10,0));
         Scene scene=new Scene(stackPane,500,200);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:resource\\a.jpg"));
+        stage.getIcons().add(new Image("a.jpg"));
         stage.show();
         scene.setOnKeyPressed(e->{
             if(e.getCode()== KeyCode.ENTER&&e.getTarget()==buttonAccept)	{
@@ -127,7 +127,7 @@ public class Confirmation {
         stackPane.setPadding(new Insets(0,0,10,0));
         Scene scene=new Scene(stackPane,500,200);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:resource\\a.jpg"));
+        stage.getIcons().add(new Image("a.jpg"));
         stage.show();
         scene.setOnKeyPressed(e->{
             if(e.getCode()== KeyCode.ENTER&&e.getTarget()==buttonAccept)	{
@@ -176,7 +176,7 @@ public class Confirmation {
         stackPane.setPadding(new Insets(0,0,10,5));
         Scene scene=new Scene(stackPane,500,200);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:resource\\a.jpg"));
+        stage.getIcons().add(new Image("a.jpg"));
         stage.show();
         scene.setOnKeyPressed(e->{
             if(e.getCode()== KeyCode.ENTER)	{

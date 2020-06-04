@@ -325,7 +325,7 @@ public class MP4Encode {
         Thread.sleep(100);
         st.setIconified(true);
         st.setScene(new Scene(new StackPane(new PostNotification().notify(st,buttonStop,buttonPause,buttonQuit)),1,1));
-        st.getIcons().add(new javafx.scene.image.Image("file:resource\\a.jpg",200,200,true,true));
+        st.getIcons().add(new javafx.scene.image.Image("a.jpg",200,200,true,true));
         st.show();
         new StaticDatabase().setControlPlayerStage(st);
         buttonStop.setOnAction(event -> {

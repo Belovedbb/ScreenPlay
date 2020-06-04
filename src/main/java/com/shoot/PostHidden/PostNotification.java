@@ -38,7 +38,7 @@ public class PostNotification {
                 .darkStyle()
                 .hideAfter(Duration.seconds(6))
                 .position(pos)
-                .graphic(new ImageView(new Image("file:resource\\a.jpg",50,50,true,true)));
+                .graphic(new ImageView(new Image("a.jpg",50,50,true,true)));
         notificationBuilder.show();
     }
 //======================================================================================================================

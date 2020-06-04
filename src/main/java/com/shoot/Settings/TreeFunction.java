@@ -28,7 +28,7 @@ import static javafx.scene.layout.BackgroundSize.AUTO;
 public class TreeFunction extends Pane {
     private static Scene primaryScene,settingScene;
     private static Stage primaryStage,settingStage;
-    static String pictureAddress="file:resource\\a.jpg";
+    static String pictureAddress="a.jpg";
     final static Button apply;
     final static Button finish;
     final  static Button cancel;
@@ -148,7 +148,7 @@ public class TreeFunction extends Pane {
                 new FileChooser.ExtensionFilter("png files(*.png)","*.png"));
         select=pickFile.showOpenDialog(Settings.getSettingStage());
         if(select==null){
-            return "file:resource\\a.jpg";
+            return "a.jpg";
         }
         return select.getAbsolutePath();
     }
@@ -336,7 +336,7 @@ public class TreeFunction extends Pane {
     private  VBox opacityView(){
         VBox vbox=new VBox(10);
         //Button button = new Button("Hello World!");
-        Node wrappedButton = Borders.wrap(new ImageView(new Image("file:resource\\a.jpg",200,200,true,true)))
+        Node wrappedButton = Borders.wrap(new ImageView(new Image("a.jpg",200,200,true,true)))
                 .lineBorder()
                 .title("Opacity")
                 .thickness(1)

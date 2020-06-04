@@ -192,7 +192,7 @@ public class StartDatabaseLite {
             System.out.println("default row exist");
         }else{
             System.out.println("picture row does not exist. Already creating...");
-            st.executeUpdate("insert into "+OFFICIAL_TABLE_PICTURE+"(id,pictureSwitch,file )"+"values('0','0','"+"file:resource\\a.jpg".replaceAll((char) 92+ ""+(char) 92,(char)47 +"")+"');");
+            st.executeUpdate("insert into "+OFFICIAL_TABLE_PICTURE+"(id,pictureSwitch,file )"+"values('0','0','"+"a.jpg".replaceAll((char) 92+ ""+(char) 92,(char)47 +"")+"');");
         }
     }
     public   void  setUpdatedTablePictureSwitch(Connection conn,int _switch) throws SQLException {
@@ -225,7 +225,7 @@ public class StartDatabaseLite {
             System.out.println("Getting update");
             return result.getString(1);
         }
-        return "file:resource\\a.jpg" ;
+        return "a.jpg" ;
     }
     @Deprecated
      void  createDatabase(Connection conn) throws SQLException {

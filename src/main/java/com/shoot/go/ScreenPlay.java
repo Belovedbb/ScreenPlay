@@ -41,18 +41,16 @@ import static javafx.scene.layout.BackgroundSize.AUTO;
 public class ScreenPlay {
     private  static final double SCREEN_DEFAULT_WIDTH= Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private  static final double SCREEN_DEFAULT_HEIGHT= Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-    Scene scene;
-    Pane stack;
-    Stage primaryStage;
-    HBox box;
-    String filename,imageFormat,videoFormat;
+    private Scene scene;
+    private Stage primaryStage;
+    private String filename,imageFormat,videoFormat;
     private StaticDatabase stageScene=new StaticDatabase();
 //======================================================================================================================
 // main method for screenplay
     //contains the content of  pane being drawn
     public void main(Stage primaryStage) throws SQLException {
         this.primaryStage=primaryStage;
-        stack=new Pane();
+        Pane stack = new Pane();
         scene=new Scene(stack,SCREEN_DEFAULT_WIDTH,SCREEN_DEFAULT_HEIGHT-50);
         stack.getChildren().add(finalPane());
         int pictureOrColor;
@@ -73,7 +71,7 @@ public class ScreenPlay {
         //TreeFunction.setSetting(scene);
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
-        primaryStage.getIcons().add(new javafx.scene.image.Image("file:resource\\a.jpg",200,200,true,true));
+        primaryStage.getIcons().add(new javafx.scene.image.Image("a.jpg",200,200,true,true));
         primaryStage.setTitle("Screen Play");
         primaryStage.show();
         stageScene.setSceneLayout(stack);
@@ -92,13 +90,13 @@ public class ScreenPlay {
     private Pane finalPane() {
         StackPane stackPane = new StackPane();
         //-box contains the functionality content drawn into the @finalpane method
-        box=new HBox();
+        HBox box = new HBox();
         HiddenSidesPane pane = new HiddenSidesPane();
 
         pane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         pane.setContent(box);
 
-        SideNode left= new SideNode( Side.LEFT, pane,box,mainPane(), scene,primaryStage);
+        SideNode left= new SideNode( Side.LEFT, pane, box,mainPane(), scene,primaryStage);
         left.setStyle("-fx-background-color: rgba(0,0, 255,.25)");
         pane.setLeft(left);
 
@@ -468,7 +466,7 @@ public class ScreenPlay {
                         CycleMethod.NO_CYCLE,
                         new Stop(0.2, javafx.scene.paint.Color.WHITE),
                         new Stop(0.8, javafx.scene.paint.Color.AQUAMARINE));
-        ImageView img= new ImageView(new javafx.scene.image.Image("file:resource\\a.jpg",(SCREEN_DEFAULT_WIDTH/4)-20,(SCREEN_DEFAULT_HEIGHT/4)-20,true,true));
+        ImageView img= new ImageView(new javafx.scene.image.Image("a.jpg",(SCREEN_DEFAULT_WIDTH/4)-20,(SCREEN_DEFAULT_HEIGHT/4)-20,true,true));
         Text lb=new Text("Screen Player");
         lb.setFont(javafx.scene.text.Font.font("Times New Roman",30));
         lb.setStroke(javafx.scene.paint.Color.BLACK);

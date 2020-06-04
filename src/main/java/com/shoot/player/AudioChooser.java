@@ -1,12 +1,10 @@
 package com.shoot.player;
 
-/**
- * Created by Beloved on 12-Feb-18.
- */
-
 import com.shoot.PostHidden.Confirmation;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -17,36 +15,38 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-//class for video player
-public class VideoChooser extends BorderPane{
 
+/**
+ * Created by Beloved on 01-Mar-18.
+ */
+//class for audio player
+public class AudioChooser extends BorderPane {
 
-    Stage mainStage,videoStage;
+    Stage mainStage,audioStage;
     File file;
     FileChooser pickFile;
     MediaPlayer player,oldPlayer,newPlayer;
-    Scene scene;
     MediaView view;
-    FileChooser.ExtensionFilter mp4Filter;
-    public VideoChooser(Stage mainStage){
+    Scene scene;
+
+    public AudioChooser(Stage mainStage){
         this.mainStage=mainStage;
         mainStage.hide();
         launchChooser();
     }
 
     void launchChooser(){
-        videoStage=new Stage();
+        audioStage=new Stage();
         ProgressIndicator pI=new ProgressIndicator();
         pI.setMaxSize(50,50);
-        videoStage.getIcons().add(new javafx.scene.image.Image("file:resource\\a.jpg",200,200,true,true));
-        videoStage.setScene(new Scene(new StackPane(pI),200,200));
-        videoStage.centerOnScreen();
-        videoStage.show();
+        audioStage.setScene(new Scene(new StackPane(pI),200,200));
+        audioStage.getIcons().add(new javafx.scene.image.Image("a.jpg",200,200,true,true));
+        audioStage.centerOnScreen();
+        audioStage.show();
         pickFile=new FileChooser();
-        mp4Filter=new FileChooser.ExtensionFilter("Mp4 files(*.mp4)","*.mp4");
-        pickFile.getExtensionFilters().addAll(mp4Filter,new FileChooser.ExtensionFilter("3gp files(*.3gp)","*.3gp"));
+        pickFile.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Mp3 files(*.mp3)","*.mp3"));
 
-        file=pickFile.showOpenDialog(videoStage);
+        file=pickFile.showOpenDialog(audioStage);
 
         this.setStyle("-fx-background-color: black");
         Scene scene=new Scene(this,700,700);
@@ -56,31 +56,31 @@ public class VideoChooser extends BorderPane{
         if(file!=null){
             player=getPlayer(file);
             view=new MediaView(player);
-            stackPane.getChildren().add(BasePlayFunction.play(player,view));
+            stackPane.getChildren().addAll(BasePlayFunction.play(player,view),new ImageView(new Image("a.jpg",200,200,true,true)));
             this.setTop(controls());
             this.setCenter(stackPane);
-            videoStage.centerOnScreen();
+            audioStage.centerOnScreen();
             view.fitWidthProperty().bind(scene.widthProperty().divide(1.2));
             view.fitHeightProperty().bind(scene.heightProperty().divide(1.2));
-            videoStage.setScene(scene);
-            videoStage.setTitle(file.getName());
-            videoStage.setMaximized(true);
+            audioStage.setScene(scene);
+            audioStage.setTitle(file.getName());
+            audioStage.setMaximized(true);
             this.requestFocus();
         }
 
         else{
             mainStage.show();
-            videoStage.close();
+            audioStage.close();
         }
 
-        videoStage.setOnCloseRequest(e->{
+        audioStage.setOnCloseRequest(e->{
             e.consume();
-            Confirmation closeBox=new Confirmation("Close Player","Are you sure you want to close up player?",videoStage,mainStage,player);
+            Confirmation closeBox=new Confirmation("Close Player","Are you sure you want to close up player?",audioStage,mainStage,player);
             closeBox.confirm();
         });
     }
 
-//menus for player
+//menus for the player
     HBox controls(){
         HBox pane=new HBox();
         MenuBar menuBar=new MenuBar();
@@ -96,26 +96,27 @@ public class VideoChooser extends BorderPane{
 
 
         actionOpen.setOnAction(e->{
-            file=pickFile.showOpenDialog(videoStage);
+            file=pickFile.showOpenDialog(audioStage);
             if(file!=null) {
                 oldPlayer = player;
                 newPlayer = getPlayer(file);
                 oldPlayer.stop();
                 view = new MediaView(newPlayer);
-                this.setCenter(BasePlayFunction.play(newPlayer, view));
+
+                this.setCenter(new StackPane(BasePlayFunction.play(newPlayer, view), new ImageView(new Image("a.jpg",200,200,true,true))));
                 view.fitWidthProperty().bind(scene.widthProperty().divide(1.2));
                 view.fitHeightProperty().bind(scene.heightProperty().divide(1.2));
-                videoStage.setTitle(file.getName());
+                audioStage.setTitle(file.getName());
                 player = newPlayer;
             }else{
                 player.stop();
                 mainStage.show();
-                videoStage.close();
+                audioStage.close();
             }
         });
 
         actionClose.setOnAction(e->{
-            Confirmation closeBox=new Confirmation("Close Player","Are you sure you want to close up player?",videoStage,mainStage,player);
+            Confirmation closeBox=new Confirmation("Close Player","Are you sure you want to close up player?",audioStage,mainStage,player);
             closeBox.confirm();
         });
 
@@ -142,4 +143,3 @@ public class VideoChooser extends BorderPane{
     }
 
 }
-

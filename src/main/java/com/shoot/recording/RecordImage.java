@@ -14,17 +14,17 @@ import java.sql.SQLException;
  */
 //This class is for audioless video recording, implements its own control listener
 public class RecordImage implements  RecordImageInterface{
-    Rectangle rect;
-    boolean recording,pauseRecording;
-    Parameter choice;
-    static Stage primaryStage;
-    String filename,format;
+    private Rectangle rect;
+    private boolean recording,pauseRecording;
+    private Parameter choice;
+    private static Stage primaryStage;
+    private String filename,format;
     //Constructor used to implement screen recording
     public RecordImage(String filename, String format, Parameter choice, Stage primaryStage){
         this. filename=filename;
         this.format=format;
         this.choice=choice;
-        this.primaryStage=primaryStage;
+        RecordImage.primaryStage =primaryStage;
     }
     //Start record
     @Override
